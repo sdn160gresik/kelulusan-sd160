@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Kelulusan - UPT SDN 160 GRESIK</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        header, .content, .login-section, .result-section {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        header {
+            background: #004d99;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        .illustration {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .illustration img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .principal-message {
+            background: #ffffff;
+            padding: 20px;
+            border-left: 5px solid #004d99;
+            margin-bottom: 20px;
+        }
+
+        .principal-message p {
+            margin: 0 0 10px 0;
+        }
+
+        .btn-login {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #0066cc;
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        .login-section, .result-section {
+            display: none;
+        }
+
+        .input-nisn {
+            margin-bottom: 20px;
+        }
+
+        .input-nisn input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .result-box {
+            background: #ffffff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        .footer-buttons button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Pengumuman Kelulusan UPT SD NEGERI 160 GRESIK<br>Tahun Ajaran 2024/2025</h1>
+    </header>
+
+    <div class="content">
+        <div class="illustration">
+            <img src="https://via.placeholder.com/700x300.png?text=Ilustrasi+Kelulusan" alt="Ilustrasi kelulusan">
+        </div>
+
+        <div class="principal-message">
+            <p>Selamat dan sukses kepada siswa kelas UPT SD NEGERI 160 GRESIK tahun pelajaran 2024-2025 yang telah menyelesaikan pendidikan selama enam tahun dengan penuh semangat dan dedikasi. Semoga ilmu yang didapat menjadi bekal yang berharga untuk jenjang berikutnya. Kami bangga atas perjuangan kalian semua!</p>
+            <p><strong>Siti Mu’awanah, S.Pd. M.Pd<br>Kepala Sekolah</strong></p>
+        </div>
+
+        <button class="btn-login" onclick="showLogin()">LOGIN untuk Cek Kelulusan</button>
+
+        <div class="login-section">
+            <div class="input-nisn">
+                <label for="nisn">Masukkan NISN Anda:</label>
+                <input type="text" id="nisn" placeholder="Contoh: 0129976362">
+            </div>
+            <button onclick="checkGraduation()">CEK</button>
+        </div>
+
+        <div class="result-section">
+            <div class="result-box" id="resultBox"></div>
+            <div class="signature">
+                Gresik, 15 Juni 2025<br>
+                Tertanda,<br>
+                <strong>Siti Mu’awanah, S.Pd. M.Pd</strong><br>
+                NIP. 197704302007012018
+            </div>
+            <div class="footer-buttons">
+                <button onclick="window.print()">Cetak Halaman</button>
+                <button onclick="resetPage()">Kembali</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            "3128152016": "ACHMAD YARDAN FAHRUDDIN",
+            "0129976362": "ABELYA NOVIAPUTRI PRASETYA",
+            "0134217790": "ADELIA FEBRYANA FIANDRA DEWI",
+            "0122529179": "AHMAD DANI",
+            "0139590375": "AKBAR JANU TIRTA",
+            "3121795963": "ALFIRA PUTRI KAMIZA",
+            "0126241950": "ANDHIKA PRATAMA PUTRA",
+            "0125825526": "AULIA NATHANIELA SAVANIA PUTRI",
+            "0133046516": "CHELSEA ANASTASIA RHEIN",
+            "3126335861": "DINDA AZZAHRA PUTRI PRATIWI",
+            "0134194989": "FARIZAL AHMAD ZAILANI",
+            "3129747650": "FATIHUL FAHMI SHOLEH",
+            "0137607767": "FERNAN JONATAN",
+            "0135844809": "JANUAR EZZANINO PUTRA HANDOKO",
+            "0131380906": "JIHAN FELINCIA ANGGRAENI",
+            "0132520232": "LUTHFIA FAIQOTUL ROSICHA",
+            "0121213682": "MAGRIVANO ASTIAFAN MUAJI",
+            "3138090284": "MARSYA NADHIFA ROHIMA",
+            "0136179265": "MELIA KHOIRUN NISA'",
+            "3129713675": "MIFTAKHUL ALZAHRA DWI RIFAIDA",
+            "0139288776": "MIKHAYLA ARSYAFIRA NUGRAHENI",
+            "0134357117": "MOCHAMMAD REYHAN MAULANA R.",
+            "0134747674": "MUHAMMAD ALBI ABDILLAH",
+            "0129694801": "MUHAMMAD EZA AL HAFIZI R.",
+            "0128134638": "MUHAMMAD FARIS AZHAR JATMIKO",
+            "3126598398": "MUHAMMAD FARREL IQBAL M.",
+            "0137105517": "MUHAMMAD RASYAH ARDLIANSAH",
+            "0137039140": "MUHAMMAD RAZES KAIRA ANWAR",
+            "0121161885": "MUHAMMAD TASNIM SUNANTO",
+            "0131256387": "MUHAMMAD ZAKIK ARAZUANZAH",
+            "0127672659": "PUTERI QONITA NABILLAH",
+            "0124960585": "RACHELLIA MEISYA CITRA KIRANA",
+            "3122084989": "RIFKY HARIYANTO",
+            "0122151375": "RISMA AFRILIA PUTRI",
+            "0138338547": "SHEREN YANSERITA SURYADI",
+            "0121476519": "SHINTA DINDASETYA FEBRIOLA"
+        };
+
+        function showLogin() {
+            document.querySelector('.login-section').style.display = 'block';
+        }
+
+        function checkGraduation() {
+            const nisn = document.getElementById('nisn').value;
+            const resultBox = document.getElementById('resultBox');
+            const name = data[nisn];
+            document.querySelector('.result-section').style.display = 'block';
+
+            if (name) {
+                resultBox.innerHTML = `<strong>Nama:</strong> ${name}<br><strong>Status:</strong> <span style='color: green;'>LULUS</span><br><br>Bagi yang dinyatakan lulus, silakan mengambil Surat Keterangan Lulus (SKL) di Ruang Administrasi dengan berpakaian seragam sekolah.`;
+            } else {
+                resultBox.innerHTML = `NISN tidak ditemukan atau siswa dinyatakan <strong style='color: red;'>TIDAK LULUS</strong>.`;
+            }
+        }
+
+        function resetPage() {
+            window.location.reload();
+        }
+    </script>
+</body>
+
+</html>
